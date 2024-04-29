@@ -1,0 +1,10 @@
+<center>
+    <% if (page.total > 1){ %>
+        <div class="layui-laypage">
+            <%- paginator({
+                prev_text:  _p("prev"),
+                next_text: _p("next")
+            }) %>
+        </div>
+    <% } %>
+</center>

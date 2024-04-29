@@ -1,0 +1,52 @@
+# 菜单
+menu:
+  Home: /
+  About: /about
+  Archives: /archives
+  Tags: /tags
+#  Categories: /categories
+  RSS: /sitemap.xml
+
+
+#beian: 豫ICP备xxxxxx号-1
+
+# ico
+favicon: /img/favicon.ico
+
+# logo
+logo: /img/logo.png
+logo_text: /img/logo-text.png
+
+# 在header中title用到
+separator: xianxin
+
+
+404_text: "心姐抛出了个 404"
+
+
+# 统计 baidu,google,bing,github
+search: google
+
+
+# 平台站点统计
+#https://tongji.baidu.com/
+#baidu_analytics: ''
+#https://analytics.google.com/analytics/web/
+#goole_analytics: "G-xxxxxxxx"
+
+
+#https://github.com/hexojs/hexo-generator-sitemap
+#npm install hexo-generator-sitemap --save
+sitemap:
+  path:
+    - sitemap.xml
+  rel: false
+  tags: true
+  categories: true
+
+# 资源库
+libs:
+  css:
+    layui: /libs/layui/css/layui.css
+  js:
+    layui: /libs/layui/layui.js

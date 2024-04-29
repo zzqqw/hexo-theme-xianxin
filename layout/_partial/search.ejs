@@ -1,0 +1,21 @@
+<!--搜索-->
+
+<%
+let logo = conf("logo")
+let logo_text = conf("logo_text")
+let menu = conf("menu")
+
+let {url, keyword} = search_url_keyword(conf("search"))
+%>
+
+
+<form class="layui-form blog-seach pull-left" method="get" action="<%= url %>">
+    <div class="layui-form-item blog-sewrap">
+        <div class="layui-input-block blog-sebox">
+            <i class="layui-icon layui-icon-search"></i>
+            <input type="text" name="<%= keyword %>" lay-verify="title" autocomplete="off"
+                   class="layui-input">
+            <input type="hidden" name="source" value="<%= conf("url") %>">
+        </div>
+    </div>
+</form>

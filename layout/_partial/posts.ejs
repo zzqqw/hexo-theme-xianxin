@@ -1,0 +1,34 @@
+<% page.posts.each(function (post) { %>
+    <div class="item">
+        <div class="item-box  layer-photos-demo1 layer-photos-demo">
+            <fieldset class="layui-elem-field">
+                <legend>
+                    <h3><a href="<%- url_for(post.path) %>"><%= post.title %></a></h3>
+                </legend>
+
+                <div class="layui-field-box" >
+                    <% post.categories.forEach(function(category) { %>
+                        <a class="layui-badge layui-bg-green"
+                           href="<%= url_for(category.path) %>">  <%= category.name %></a>
+                    <% }); %>
+
+                    <% if (post.tags && post.tags.length > 0) { %>
+                        <% post.tags.forEach(function(tag) { %>
+                            <a class="layui-badge layui-bg-orange"
+                               href="<%= url_for(tag.path) %>"><%= tag.name %></a>
+                        <% }); %>
+                    <% } %>
+
+                    <hr class="layui-border-red">
+                    <h5><%= _p("publishedon") %>：<span><%- date(post.date, "YYYY.MM.DD") %></span></h5>
+                    <p class="layui-text">
+                        <a href="<%- url_for(post.path) %>" target="_blank">
+                            <%- strip_html(post.content).substr(0, 130) %>
+                        </a>
+                    </p>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+<% }) %>
+<%- partial('paginator') %>

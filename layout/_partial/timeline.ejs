@@ -1,0 +1,38 @@
+<div class="layui-timeline">
+    <% var currentGroup = null; %>
+    <% page.posts.each(function(article, pi) { %>
+        <% var yearMonth = date(article.date, 'YYYY/MM'); %>
+
+        <% if (yearMonth !== currentGroup) { %>
+            <% if (currentGroup !== null) { %>
+</div> <!-- Close the previous group's timeline content -->
+<% } %>
+
+<div class="layui-timeline-item">
+    <i class="layui-icon layui-timeline-axis"></i>
+    <div class="layui-timeline-content layui-text">
+        <h3 class="layui-timeline-title">
+            <%- link_to("archives/" + yearMonth, yearMonth) %>
+        </h3>
+        <% currentGroup = yearMonth; %>
+    </div>
+    <% } %>
+
+    <div class="layui-timeline-item">
+        <!--    <i class="layui-icon layui-timeline-axis layui-icon-dot"></i>-->
+        <div class="layui-timeline-content layui-text">
+            <p>
+                <a href="<%- url_for(article.path) %>"><%= article.title %></a>
+            </p>
+        </div>
+    </div>
+    <% }); %>
+
+    <% if (currentGroup !== null) { %>
+</div> <!-- Close the last group's timeline content -->
+<% } %>
+
+<div>
+    <%- partial('_partial/paginator') %>
+</div>
+</div>

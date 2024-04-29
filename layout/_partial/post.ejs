@@ -1,0 +1,121 @@
+<div class="item">
+    <div class="item-box">
+        <% if (is_post()) { %>
+            <!-- 面包屑开始-->
+            <p class="layui-breadcrumb" style="visibility:inherit">
+                <a href="/"> <%= _p("index") %> </a>
+                <% page.categories.forEach(function(category) { %>
+                    <a href="<%= url_for(category.path) %>">  <%= category.name %></a>
+                <% }); %>
+            </p>
+            <!-- 面包屑结束-->
+
+            <!-- 文章基本内容开始-->
+            <h3> <%= page.title %></h3>
+            <h5>
+                <%= _p("publishedon") %>：<span> <%- date(page.date, "YYYY-MM-DD") %></span>
+            </h5>
+
+            <!-- 文章tag开始-->
+            <% if (page.tags && page.tags.length > 0) { %>
+                <div class="post-meta">
+                    <% page.tags.forEach(function(tags) { %>
+                        <a href="<%= url_for(tags.path) %>">
+                            <button type="button" class="layui-btn layui-btn-sm layui-bg-orange">
+                               #<%= tags.name %>
+                            </button>
+                        </a>
+                    <% }); %>
+                </div>
+            <% } %>
+            <!-- 文章tag结束-->
+
+            <!-- 文章内容开始 -->
+            <hr class="layui-border-orange">
+            <div class="layui-content">
+                <p class="lay-content page-content"><%- page.content %> </p>
+            </div>
+            <!-- 文章内容结束 -->
+
+            <!-- 文章底部开始 -->
+            <hr class="layui-border-orange">
+            <!-- 文章底部结束 -->
+        <% } else { %>
+            <div class="layui-content">
+                <p class="lay-content"><%- page.content %></p>
+            </div>
+    </div>
+    <hr class="layui-border-orange">
+    <% } %>
+    <!-- 文章基本内容结束-->
+</div>
+</div>
+
+
+<!--page.content 针对highlight样式-->
+<style>
+    /* 表格样式 */
+    .layui-content table {
+        border-collapse: collapse;
+        border-spacing: 0;
+        margin: 10px 0;
+        display: table;
+    }
+    /* 表格样式 */
+    .layui-content table td, table th {
+        padding: 10px;
+        border: 1px solid #ddd;
+        color: #333;
+        vertical-align: middle;
+        word-break: normal !important;
+    }
+    /*表格代码 去掉序号*/
+    .layui-content table .gutter {
+        display: none;
+    }
+    /* 代码样式 */
+    .layui-content figure.highlight {
+        margin: 15px 0;
+        background: #e3e3e3;
+        padding: 0px;
+        line-height: 24px;
+        /* 文字超过宽度时自动换行 */
+        overflow-x: auto;
+    }
+    /* 表格样式 */
+    .layui-content figure.highlight table td {
+        border: 0;
+    }
+    /* 引用样式 */
+    .layui-content blockquote {
+        margin: 15px 0;
+        background: #e3e3e3;
+        border-left: 3px solid #5fb878;
+        padding: 10px 0 0 20px;
+    }
+    /* 列表样式 */
+    .layui-content ol li {
+        margin-bottom: 10px;
+        list-style: decimal;
+        margin-left: 10px;
+    }
+    /* 无序列表样式 */
+    .layui-content ul li {
+        margin-bottom: 10px;
+        list-style: inside;
+        margin-left: 10px;
+    }
+    /* 代码样式 */
+    .layui-content code {
+        background-color: #e3e3e3;
+    }
+    /* 链接样式 */
+    .layui-content a {
+        text-decoration: underline;
+        color: #1e9fff;
+    }
+    /* 图片样式 */
+    body img {
+        max-width: 100%;
+    }
+</style>

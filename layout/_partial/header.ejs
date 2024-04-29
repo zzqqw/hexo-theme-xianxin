@@ -1,0 +1,26 @@
+<div class="header-wrap">
+    <h1 class="logo pull-left">
+        <%
+        let logo = conf("logo")
+        let logo_text = conf("logo_text")
+        let menu = conf("menu")
+        %>
+        <a href="/">
+            <img src="<%= url_for(logo) %>" alt="" class="logo-img">
+            <img src="<%= url_for(logo_text) %>" alt="" class="logo-text">
+        </a>
+    </h1>
+    <%- partial('search') %>
+    <div class="blog-nav pull-right">
+        <ul class="layui-nav pull-left">
+            <% for (name in menu) { %>
+                <li class="layui-nav-item">
+                    <a href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
+                </li>
+            <% } %>
+        </ul>
+<!--        <a href="#" class="personal pull-left">-->
+<!--            <i class="layui-icon layui-icon-username"></i>-->
+<!--        </a>-->
+    </div>
+</div>

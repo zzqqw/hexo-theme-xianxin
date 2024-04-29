@@ -1,0 +1,53 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%
+    var title = config.title;
+    var separator = theme.separator;
+    separator = ` ${separator} `;
+    if (is_home()) {
+        if (config.subtitle) {
+            title += separator + config.subtitle;
+        }
+    }
+    if (is_archive()) {
+        title = __('Archives') + separator + title;
+    }
+    if (is_tag()) {
+        title = __('Post.Tags') + ' : ' + page.tag + separator + title;
+    }
+
+    if (is_category()) {
+        title= __('Category') + ' : ' + page.category + separator + title;
+    }
+    if (page.title) {
+        title = page.title + separator + title;
+    }
+    %>
+
+    <title><%= title %></title>
+    <%
+    let keywords = theme.keywords, tmp = [];
+    if (page.tags && page.tags.length) {
+        page.tags.forEach(function (tag) {
+            tmp.push(tag.name);
+        });
+        keywords = tmp.join(',');
+    }
+    %>
+    <meta name="keywords" content=<%= keywords %>>
+    <% if (conf("description")){ %>
+        <meta name="description" content="<%= conf("description") %>">
+    <% } %>
+
+    
+    <% if (conf("favicon")){ %>
+        <link rel="shortcut icon" type="image/x-icon" href="<%= url_for(conf("favicon")) %>">
+    <% } %>
+
+    <%- css('css/blog.css') %>
+    <link rel="stylesheet" href="<%- url_for(theme.libs.css.layui) %>">
+
+    <script src="<%- url_for(theme.libs.js.layui) %>"></script>
+    <%- js('js/blog.js') %>
+</head>

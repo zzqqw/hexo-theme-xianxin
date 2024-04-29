@@ -1,0 +1,29 @@
+<%
+let baidu_analytics = conf("baidu_analytics")
+let goole_analytics = conf("goole_analytics")
+%>
+<% if (baidu_analytics){ %>
+    <!--百度站点统计https://tongji.baidu.com/-->
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?<%= baidu_analytics %>";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+<% } %>
+
+<% if (goole_analytics){ %>
+<!-- https://analytics.google.com/analytics/web/ -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<%= goole_analytics %>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', "<%= goole_analytics %>");
+</script>
+<% } %>

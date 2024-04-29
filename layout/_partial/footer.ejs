@@ -1,0 +1,24 @@
+<p>
+    <span>
+        Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </span>
+    <span>
+        |
+    </span>
+    <span>
+       Theme - <a href="https://github.com/zzqqw/hexo-theme-xianxin" target="_blank">xianxin</a>
+    </span>
+</p>
+
+<p>
+    <span>&copy; <%= date(new Date(), 'YYYY') %></span>
+    <%
+    let beian = conf("beian")
+    %>
+    <% if (beian){ %>
+        <span><a href="https://beian.miit.gov.cn/"><%= beian %></a></span>
+    <% } %>
+    <span>MIT license</span>
+</p>
+
+<%- partial('analytics') %>

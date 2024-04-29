@@ -1,0 +1,8 @@
+<div class="contar-wrap">
+    <% if(is_archive()){ %>
+        <!--文章列表-->
+        <%- partial('_partial/timeline') %>
+    <% } else { %>
+        <%- partial('_partial/posts') %>
+    <% } %>
+</div>

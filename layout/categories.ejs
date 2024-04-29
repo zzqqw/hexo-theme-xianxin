@@ -1,0 +1,16 @@
+<div class="contar-wrap">
+    <div class="item-box">
+        <!-- tag开始-->
+        <% if (site.categories && site.categories.length > 0) { %>
+            <div class="post-meta">
+                <% site.categories.forEach(function(categorie) { %>
+                    <a href="<%= url_for(categorie.path) %>">
+                        <button type="button" style="width: 120px;height: 30px" class="layui-btn layui-btn-sm" >
+                            <%= categorie.name %>
+                        </button>
+                    </a>
+                <% }); %>
+            </div>
+        <% } %>
+    </div>
+</div>
